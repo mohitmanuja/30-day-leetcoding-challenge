@@ -1,0 +1,31 @@
+
+class Solution {
+    public boolean isHappy(int n) {
+        HashSet hashSet = new HashSet();
+        return getSumSquareNumber(hashSet, n);
+    }
+
+    public boolean getSumSquareNumber(HashSet hashSet, int num) {
+        if (num == 1) {
+            return true;
+        }
+        if (num < 0) {
+            return false;
+        }
+        int newNumber = 0;
+
+        while ((num != 0)) {
+            int d = num % 10;
+            num = num / 10;
+            newNumber = newNumber + d * d;
+
+        }
+
+
+        if (hashSet.contains(newNumber)) {
+            return false;
+        }
+        hashSet.add(newNumber);
+        return getSumSquareNumber(hashSet, newNumber);
+    }
+}

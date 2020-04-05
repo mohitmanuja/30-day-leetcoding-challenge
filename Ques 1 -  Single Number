@@ -1,19 +1,37 @@
 class Solution {
-    public int singleNumber(int[] nums) {
-        
-          HashSet<Integer> hashSet = new HashSet<>();
 
-        for (int i=0;i<nums.length;i++){
-            if (hashSet.contains(nums[i])){
+------------------------------------------------------
+
+    public int singleNumber(int[] nums) {
+
+        HashSet<Integer> hashSet = new HashSet<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (hashSet.contains(nums[i])) {
                 hashSet.remove(nums[i]);
-            }else {
+            } else {
                 hashSet.add(nums[i]);
             }
         }
         Iterator<Integer> integerIterator = hashSet.iterator();
 
         return integerIterator.next();
+    }
 
-        
+Complexity - O(n)    
+
+Another Solution
+----------------------------------------------------------
+
+    public int singleNumber(int[] nums) {
+
+        int x = 0;
+        for (int i = 0; i < nums.length; i++) {
+            x = x ^ nums[i];
+        }
+
+        return x;
     }
 }
+
+Complexity - O(n)

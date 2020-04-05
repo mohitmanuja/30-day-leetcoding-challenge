@@ -1,0 +1,21 @@
+class Solution {
+    public int maxProfit(int[] nums) {
+          int current_profit = 0;
+        int purchase;
+        int i = 0;
+        while (i < nums.length) {
+            while (i < nums.length - 1 && nums[i] > nums[i + 1]) {
+                i++;
+            }
+            purchase = nums[i];
+            i++;
+            while (i < nums.length && nums[i] > nums[i - 1]) {
+                i++;
+            }
+            current_profit = current_profit + nums[i-1]-purchase;
+
+        }
+
+        return current_profit;
+    }
+}
